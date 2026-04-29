@@ -1,0 +1,6 @@
+.bob/
+.vscode/
+.DS_Store
+**/.DS_Store
+pub/
+.bak
