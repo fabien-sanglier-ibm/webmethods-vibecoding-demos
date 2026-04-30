@@ -1,0 +1,71 @@
+replicaCount: 1
+
+# image:
+#   repository: ibmwebmethods.azurecr.io/webmethods-microservicesruntime
+#   pullPolicy: IfNotPresent
+#   tag: 11.1.0.9
+
+# imagePullSecrets:
+#   - name: ibmwebmethods.azurecr.io
+
+# custom image with extra built-in packages
+image:
+  repository: webmethods-ai-coding-demos
+  pullPolicy: Never
+  tag: 1.0.0-local
+
+imagePullSecrets: []
+
+statefulSet: false
+
+microservicesruntime:
+  licenseKeyProvided: false
+  httpsPort: 5543
+  httpPort: 5555
+  diagnosticPort: 9999
+  memoryHeap:
+    min: "1024M"
+    max: "1024M"
+  javaCustomOpts:
+    - "-Dmy.prop1=value1"
+  propertiesFile:
+    content: |
+
+extraEnvs:
+  - name: SAG_IS_ADMIN_PASSWORD
+    value: "SomePassword123!"
+
+
+
+propertiesFile:
+  content: |
+    globalvariable.WxVibeCodingDemos.PackageTestingSecretVar2.isSecure=true
+    globalvariable.WxVibeCodingDemos.PackageTestingSecretVar2.value=SECRET5
+    globalvariable.WxVibeCodingDemos.PackageTestingVar1.value=testing10
+
+# Use persistent volume for IS packages, configuration settings and logs ...
+persistence:
+  enabled: false
+
+resources:
+  requests:
+    memory: 1.5Gi
+    cpu: "0.5"
+  limits:
+    memory: 2Gi
+    cpu: "1"
+
+service:
+  type: ClusterIP
+  port: 5555
+
+#expose externally
+ingress:
+  enabled: true
+  hosts:
+    - host: msr-ai-coding.localhost
+      paths:
+        - path: /
+          pathType: Prefix
+          port: 5555
+
