@@ -1,5 +1,5 @@
 ARG BASE_MSR_VERSION=11.1.0.11
-ARG WPM_PACKAGES="WmJDBCAdapter:v10.3.10.21 WmMQAdapter:v6.5.6.52"
+ARG WPM_PACKAGES="WmKafkaAdapter:v9.6.11.16 WmJDBCAdapter:v10.3.10.21 WmMQAdapter:v6.5.6.52"
 
 FROM ibmwebmethods.azurecr.io/webmethods-microservicesruntime:${BASE_MSR_VERSION}
 
