@@ -1,0 +1,192 @@
+openapi: 3.0.3
+info:
+  title: Event Publishing API
+  description: |
+    Mock Kafka event publishing service with "send and forget" pattern.
+    
+    **Features:**
+    - Asynchronous event publishing to Kafka topics
+    - Fire and forget pattern (non-blocking)
+    - Input validation
+    - Unique message ID generation
+    - Comprehensive error handling
+    
+    **Note:** This is a mock implementation. Actual Kafka integration can be added later using webMethods Kafka Adapter.
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: http://localhost:5555
+    description: Local Development Server
+  - url: https://api.example.com
+    description: Production Server
+
+tags:
+  - name: Events
+    description: Event publishing operations
+
+paths:
+  /invoke/WxVibeCodingDemos.project1.eventing/SendEvent:
+    post:
+      tags:
+        - Events
+      summary: Send event to Kafka topic
+      description: |
+        Publishes an event to a specified Kafka topic using "send and forget" pattern.
+        This is a mock implementation that logs events for testing.
+        
+        **Behavior:**
+        - Validates required parameters (topic, eventData)
+        - Generates unique message ID
+        - Logs event details (mock Kafka send)
+        - Returns immediately without waiting for Kafka acknowledgment
+        
+        **Use Cases:**
+        - Audit logging
+        - Event-driven architecture
+        - Asynchronous notifications
+        - Analytics data collection
+      operationId: sendEvent
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/SendEventRequest'
+            examples:
+              calculationEvent:
+                summary: Calculation completed event
+                value:
+                  topic: "calculator.events"
+                  eventData: "{\"operation\":\"add\",\"number1\":\"10\",\"number2\":\"5\",\"result\":\"15.0\",\"timestamp\":\"2026-05-07T20:00:00Z\"}"
+                  eventType: "calculation.completed"
+              auditEvent:
+                summary: Audit event
+                value:
+                  topic: "audit.events"
+                  eventData: "{\"action\":\"user.login\",\"userId\":\"user123\",\"timestamp\":\"2026-05-07T20:00:00Z\"}"
+                  eventType: "audit.event"
+              minimalEvent:
+                summary: Minimal event (no eventType)
+                value:
+                  topic: "test.topic"
+                  eventData: "{\"test\":\"data\"}"
+      responses:
+        '200':
+          description: Event processing completed
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/SendEventResponse'
+              examples:
+                success:
+                  summary: Event sent successfully
+                  value:
+                    success: "true"
+                    messageId: "msg-Wed May 07 20:00:00 EDT 2026"
+                    errorMessage: ""
+                validationError:
+                  summary: Validation error - missing topic
+                  value:
+                    success: "false"
+                    messageId: ""
+                    errorMessage: "Topic is required"
+                missingData:
+                  summary: Validation error - missing eventData
+                  value:
+                    success: "false"
+                    messageId: ""
+                    errorMessage: "Event data is required"
+        '400':
+          description: Bad request - invalid input
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    SendEventRequest:
+      type: object
+      required:
+        - topic
+        - eventData
+      properties:
+        topic:
+          type: string
+          description: Kafka topic name to publish the event to
+          example: "calculator.events"
+          minLength: 1
+        eventData:
+          type: string
+          description: JSON string containing the event payload
+          example: "{\"operation\":\"add\",\"result\":\"15.0\"}"
+          minLength: 1
+        eventType:
+          type: string
+          description: Event type identifier for categorization (optional)
+          example: "calculation.completed"
+    
+    SendEventResponse:
+      type: object
+      required:
+        - success
+        - messageId
+        - errorMessage
+      properties:
+        success:
+          type: string
+          description: Indicates if the event was sent successfully
+          enum:
+            - "true"
+            - "false"
+          example: "true"
+        messageId:
+          type: string
+          description: Unique message identifier (timestamp-based). Empty string if failed.
+          example: "msg-Wed May 07 20:00:00 EDT 2026"
+        errorMessage:
+          type: string
+          description: Error description if success is false, empty string otherwise
+          example: ""
+    
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Service execution failed"
+        errorType:
+          type: string
+          description: Type of error
+          example: "ValidationError"
+
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication with username and password
+    
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+security:
+  - basicAuth: []
+  - apiKey: []
+
+# Made with Bob

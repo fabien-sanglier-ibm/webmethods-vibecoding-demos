@@ -1,0 +1,227 @@
+openapi: 3.0.3
+info:
+  title: Calculator Enhanced API
+  description: |
+    Enhanced calculator service supporting decimal arithmetic operations with automatic rounding to 4 decimal places.
+    
+    **Supported Operations:**
+    - `add` - Addition of two numbers
+    - `subtract` - Subtraction of two numbers
+    - `multiply` - Multiplication of two numbers
+    - `divide` - Division of two numbers (returns Infinity for division by zero)
+    
+    **Features:**
+    - Supports both integer and decimal numbers
+    - Automatic rounding to 4 decimal places
+    - Comprehensive error handling
+    - Returns NaN for invalid operations or inputs
+  version: 1.0.0
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: http://localhost:5555
+    description: Local Development Server
+  - url: https://api.example.com
+    description: Production Server
+
+tags:
+  - name: Calculator
+    description: Mathematical calculation operations
+
+paths:
+  /invoke/WxVibeCodingDemos.project1.calculator/CalculateEnhanced:
+    post:
+      tags:
+        - Calculator
+      summary: Perform arithmetic calculation
+      description: |
+        Performs arithmetic operations on two numbers with support for decimals.
+        Results are automatically rounded to 4 decimal places.
+        
+        **Operation Values:**
+        - `add` - Adds number1 and number2
+        - `subtract` - Subtracts number2 from number1
+        - `multiply` - Multiplies number1 by number2
+        - `divide` - Divides number1 by number2 (returns Infinity if number2 is 0)
+        
+        **Error Handling:**
+        - Invalid operation: Returns `success=false`, `result=NaN`
+        - Invalid number format: Returns `success=false`, `result=NaN`
+        - Division by zero: Returns `success=true`, `result=Infinity`
+      operationId: calculateEnhanced
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CalculationRequest'
+            examples:
+              addition:
+                summary: Add two numbers
+                value:
+                  number1: "10.5"
+                  number2: "5.25"
+                  operation: "add"
+              subtraction:
+                summary: Subtract two numbers
+                value:
+                  number1: "20"
+                  number2: "8"
+                  operation: "subtract"
+              multiplication:
+                summary: Multiply two numbers
+                value:
+                  number1: "7"
+                  number2: "6"
+                  operation: "multiply"
+              division:
+                summary: Divide two numbers
+                value:
+                  number1: "100"
+                  number2: "4"
+                  operation: "divide"
+              divisionByZero:
+                summary: Division by zero (returns Infinity)
+                value:
+                  number1: "10"
+                  number2: "0"
+                  operation: "divide"
+      responses:
+        '200':
+          description: Calculation completed successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CalculationResponse'
+              examples:
+                successAdd:
+                  summary: Successful addition
+                  value:
+                    result: "15.75"
+                    success: "true"
+                    errorMessage: ""
+                successDivide:
+                  summary: Successful division
+                  value:
+                    result: "25.0"
+                    success: "true"
+                    errorMessage: ""
+                divisionByZero:
+                  summary: Division by zero
+                  value:
+                    result: "Infinity"
+                    success: "true"
+                    errorMessage: ""
+                invalidOperation:
+                  summary: Invalid operation error
+                  value:
+                    result: "NaN"
+                    success: "false"
+                    errorMessage: "Unknown operation: power"
+                invalidNumber:
+                  summary: Invalid number format error
+                  value:
+                    result: "NaN"
+                    success: "false"
+                    errorMessage: "For input string: \"abc\""
+        '400':
+          description: Bad request - missing required parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+
+components:
+  schemas:
+    CalculationRequest:
+      type: object
+      required:
+        - number1
+        - number2
+        - operation
+      properties:
+        number1:
+          type: string
+          description: First number (supports integers and decimals)
+          example: "10.5"
+          pattern: '^-?\d+(\.\d+)?$'
+        number2:
+          type: string
+          description: Second number (supports integers and decimals)
+          example: "5.25"
+          pattern: '^-?\d+(\.\d+)?$'
+        operation:
+          type: string
+          description: Arithmetic operation to perform
+          enum:
+            - add
+            - subtract
+            - multiply
+            - divide
+          example: "add"
+    
+    CalculationResponse:
+      type: object
+      required:
+        - result
+        - success
+        - errorMessage
+      properties:
+        result:
+          type: string
+          description: |
+            Calculation result rounded to 4 decimal places.
+            Special values: "NaN" (error), "Infinity" (division by zero)
+          example: "15.75"
+        success:
+          type: string
+          description: Indicates if the operation was successful ("true" or "false")
+          enum:
+            - "true"
+            - "false"
+          example: "true"
+        errorMessage:
+          type: string
+          description: Error message if success is false, empty string otherwise
+          example: ""
+    
+    ErrorResponse:
+      type: object
+      properties:
+        error:
+          type: string
+          description: Error message
+          example: "Missing required parameter: operation"
+        errorType:
+          type: string
+          description: Type of error
+          example: "ValidationError"
+
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+      description: Basic authentication with username and password
+    
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication
+
+security:
+  - basicAuth: []
+  - apiKey: []
+
+# Made with Bob

@@ -1,6 +1,21 @@
 # webmethods-vibecoding-demos
 Repo to host the various packages generated with Bob vibecoding
 
+## Relevant Documents
+
+All this docs were created by IBM BoB!!!
+
++ [Calculator Service with Kafka Event Publishing - Integration Summary](./docs/INTEGRATION_SUMMARY.md)
++ [Code Quality Assessment: Calculator with Kafka Event Publishing Integration](./docs/CODE_QUALITY_ASSESSMENT.md)
+
+Services:
+
++ [CalculateEnhanced Service](./docs/calculator/CalculateEnhanced.md)
++ [API README](./docs/calculator/API-README.md)
++ [API SUMMARY](./docs/calculator/API-SUMMARY.md)
+
++ [SendEvent Service Documentation](./docs/eventing/SendEvent.md)
+
 ## deployment to docker
 
 ### install
