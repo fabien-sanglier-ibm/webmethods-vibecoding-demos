@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<IDataXMLCoder version="1.0">
+  <record javaclass="com.wm.data.ISMemDataImpl">
+    <value name="result">-15.0</value>
+    <value name="success">true</value>
+    <value name="errorMessage"></value>
+  </record>
+</IDataXMLCoder>
