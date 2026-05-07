@@ -3,7 +3,7 @@ Repo to host the various packages generated with Bob vibecoding
 
 ## Relevant Documents
 
-All this docs were created by IBM BoB!!!
+All this docs were created by [IBM BoB](https://bob.ibm.com)!!!
 
 + [Calculator Service with Kafka Event Publishing - Integration Summary](./docs/INTEGRATION_SUMMARY.md)
 + [Code Quality Assessment: Calculator with Kafka Event Publishing Integration](./docs/CODE_QUALITY_ASSESSMENT.md)
