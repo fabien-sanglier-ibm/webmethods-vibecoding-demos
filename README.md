@@ -1,4 +1,5 @@
 # webmethods-vibecoding-demos
+
 Repo to host the various packages generated with Bob vibecoding
 
 ## Relevant Documents
@@ -21,7 +22,7 @@ Services:
 ### Prerequisites - webMethods Docker Registry
 
 + Get Access to the [webMethods Container Registry](https://containers.webmethods.io/login) (IBM ID Required)
-+ Create a new registry access key (Account > Settings > Create access token)
++ Create a new registry access key (`Account > Settings > Create access token`)
 + use the user + key to login to the registry using `docker login` command
 + pull down the latest `Microservice Runtime image` (ie. ibmwebmethods.azurecr.io/webmethods-microservicesruntime:11.1.0.11)
 
@@ -31,8 +32,8 @@ The build also installs some webMethods package adapters in the containers (JDBC
 
 + Get Access to the [webMethods Package Registry](https://packages.webmethods.io/) (IBM ID Required)
 + click "login" and use your IBM ID
-+ Create a new access tokens (account > settings > generate password)
-+ Save the token into a file at ${HOME}/wpm_token_key.txt so the container build can use it
++ Create a new access tokens (`account > settings > generate password`)
++ Save the token into a file at `${HOME}/wpm_token_key.txt` so the container build can use it
 
 ### Build the container
 
