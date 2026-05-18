@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<IDataXMLCoder version="1.0">
-  <record javaclass="com.wm.data.ISMemDataImpl">
-    <value name="number1">100</value>
-    <value name="number2">4</value>
-    <value name="operation">divide</value>
-  </record>
-</IDataXMLCoder>

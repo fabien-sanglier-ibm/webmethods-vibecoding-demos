@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<webMethodsTestSuite description="Calculate TestSuite - Comprehensive non-regression coverage" name="CalculateTestSuite">
+    
+    <!-- ========== ADD OPERATION TESTS ========== -->
+    
+    <!-- Success Tests for Add -->
+    <webMethodsTestCase description="Success: Add positive integers (10 + 5 = 15)" name="success_add_positive_integers">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_positive_integers-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_positive_integers-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Add decimals with precision (10.5 + 5.25 = 15.75)" name="success_add_decimals">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_decimals-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_decimals-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Add negative numbers (-10 + -5 = -15)" name="success_add_negative">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_negative-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_add_negative-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- Error Tests for Add -->
+    <webMethodsTestCase description="Error: Add with missing num1" name="error_add_missing_num1">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_missing_num1-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_missing_num1-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Add with invalid num1 (alphabetic)" name="error_add_invalid_num1">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_invalid_num1-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_invalid_num1-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Add with empty num2" name="error_add_empty_num2">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_empty_num2-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_add_empty_num2-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- ========== SUBTRACT OPERATION TESTS ========== -->
+    
+    <!-- Success Tests for Subtract -->
+    <webMethodsTestCase description="Success: Subtract positive integers (20 - 8 = 12)" name="success_subtract_positive">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_positive-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_positive-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Subtract decimals (15.75 - 3.25 = 12.5)" name="success_subtract_decimals">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_decimals-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_decimals-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Subtract resulting in negative (5 - 10 = -5)" name="success_subtract_negative_result">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_negative_result-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_subtract_negative_result-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- Error Tests for Subtract -->
+    <webMethodsTestCase description="Error: Subtract with null num1" name="error_subtract_null_num1">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_null_num1-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_null_num1-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Subtract with invalid num2 (special chars)" name="error_subtract_invalid_num2">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_invalid_num2-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_invalid_num2-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Subtract with both params missing" name="error_subtract_missing_both">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_missing_both-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_subtract_missing_both-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- ========== MULTIPLY OPERATION TESTS ========== -->
+    
+    <!-- Success Tests for Multiply -->
+    <webMethodsTestCase description="Success: Multiply positive integers (6 * 7 = 42)" name="success_multiply_positive">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_positive-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_positive-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Multiply decimals (2.5 * 4.2 = 10.5)" name="success_multiply_decimals">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_decimals-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_decimals-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Multiply by zero (10 * 0 = 0)" name="success_multiply_by_zero">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_by_zero-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_multiply_by_zero-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- Error Tests for Multiply -->
+    <webMethodsTestCase description="Error: Multiply with missing num2" name="error_multiply_missing_num2">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_missing_num2-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_missing_num2-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Multiply with invalid num1 (text)" name="error_multiply_invalid_num1">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_invalid_num1-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_invalid_num1-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Multiply with empty strings" name="error_multiply_empty_strings">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_empty_strings-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_multiply_empty_strings-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- ========== DIVIDE OPERATION TESTS ========== -->
+    
+    <!-- Success Tests for Divide -->
+    <webMethodsTestCase description="Success: Divide positive integers (20 / 4 = 5)" name="success_divide_positive">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_positive-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_positive-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Divide decimals (10.5 / 2.5 = 4.2)" name="success_divide_decimals">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_decimals-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_decimals-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Success: Divide with high precision (22 / 7 = 3.1429)" name="success_divide_precision">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_precision-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/success_divide_precision-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- Error Tests for Divide -->
+    <webMethodsTestCase description="Error: Divide by zero" name="error_divide_by_zero">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_by_zero-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_by_zero-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Divide with invalid num1" name="error_divide_invalid_num1">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_invalid_num1-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_invalid_num1-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Divide with missing num2" name="error_divide_missing_num2">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_missing_num2-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_divide_missing_num2-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <!-- ========== INVALID OPERATION TESTS ========== -->
+    
+    <webMethodsTestCase description="Error: Invalid operation (modulo)" name="error_invalid_operation_modulo">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_invalid_operation_modulo-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_invalid_operation_modulo-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Missing operation parameter" name="error_missing_operation">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_missing_operation-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_missing_operation-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+    <webMethodsTestCase description="Error: Empty operation parameter" name="error_empty_operation">
+        <service folder="WxVibeCodingDemos.project1.calculator" name="Calculate">
+            <input>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_empty_operation-input.xml"/>
+            </input>
+            <expected>
+                <file filename="WxVibeCodingDemos/project1/calculator/error_empty_operation-result.xml"/>
+            </expected>
+        </service>
+    </webMethodsTestCase>
+    
+</webMethodsTestSuite>
+
+<!-- Made with Bob -->
