@@ -17,6 +17,14 @@ Services:
 
 + [SendEvent Service Documentation](./docs/eventing/SendEvent.md)
 
+
+## local dev - Install a package
+
+```sh
+./wpm.sh install -ws https://packages.webmethods.io -wr licensed -d ../../IntegrationServer -j $(cat ~/packages.wmio.txt) WmKafkaAdapter:v9.6.11.16
+./wpm.sh install -ws https://packages.webmethods.io -wr licensed -d ../../IntegrationServer -j $(cat ~/packages.wmio.txt) WmMQAdapter:v6.5.6.52
+```
+
 ## deployment to docker
 
 ### Prerequisites - webMethods Docker Registry
